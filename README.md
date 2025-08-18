@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJs Posts App
+
+A simple post management application built with [Next.js](https://nextjs.org/). Users can create, edit, and delete their own posts in a clean, modern interface.
+
+## Features
+
+- **Create Posts:** Add new posts with a title and subject.
+- **Edit Posts:** Update existing posts easily.
+- **Delete Posts:** Remove posts you no longer want.
+- **Responsive UI:** Modern design with Tailwind CSS, works on all devices.
+
+## Tech Stack
+
+- [Next.js 15](https://nextjs.org/) (App Router)
+- [React 19](https://react.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Run the development server:**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Open your browser:**
 
-## Learn More
+   Visit [http://localhost:3000](http://localhost:3000) to use the app.
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Click the **New Post** button to add a post.
+- Use the edit (✏️) and delete (❌) buttons on each post card to manage your posts.
+- All data is stored in memory (no backend/database), so posts will reset on page reload.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+- `app/` - Next.js app directory (pages, layout, profile)
+- `components/` - Reusable UI components (Modal, PostCard, PostHeader, etc.)
+- `public/` - Static assets
+- `app/globals.css` - Global styles (Tailwind CSS)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can easily extend this project by adding authentication, connecting to a backend, or enhancing the post model.
+
+## License
+
+This project is open source and free to use.
