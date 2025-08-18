@@ -9,7 +9,14 @@ import PostDeleteButton from "@/components/PostDeleteButton";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title:
+        "nextJs is a framework for building server-side rendered React applications.",
+      subject: "Nextjs",
+    },
+  ]);
   const [modalOpen, setModalOpen] = useState(false);
   const [editPostData, setEditPostData] = useState({});
 
@@ -52,47 +59,40 @@ export default function Home() {
         {/* main */}
         <div className="mt-12 px-[10%] flex gap-x-4 gap-y-8 flex-wrap pb-12 ">
           <AnimatePresence>
-            {posts.length > 0 ? (
-              posts.map((post, index) => (
-                <motion.div
-                  className="flex-auto overflow-hidden "
-                  key={post.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -40 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                >
-                  <PostCard>
-                    <div className="flex relative overflow-auto flex-col gap-y-3 bg-gradient-to-r  from-purple-300 to-purple-400 rounded-lg px-4 py-6 shadow-sm">
-                      <div className="absolute top-4 right-4">
-                        <div className="flex gap-x-3 flex-row-reverse items-center">
-                          <PostDeleteButton
-                            handleButtonAction={handleButtonAction}
-                            postId={post.id}
-                          />
-                          <PostEditButton
-                            handleButtonAction={handleButtonAction}
-                            postId={post.id}
-                          />
+            {posts.length > 0
+              ? posts.map((post, index) => (
+                  <motion.div
+                    className="flex-auto overflow-hidden "
+                    key={post.id}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -40 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  >
+                    <PostCard>
+                      <div className="flex relative overflow-auto flex-col gap-y-3 bg-gradient-to-r  from-purple-300 to-purple-400 rounded-lg px-4 py-6 shadow-sm">
+                        <div className="absolute top-4 right-4">
+                          <div className="flex gap-x-3 flex-row-reverse items-center">
+                            <PostDeleteButton
+                              handleButtonAction={handleButtonAction}
+                              postId={post.id}
+                            />
+                            <PostEditButton
+                              handleButtonAction={handleButtonAction}
+                              postId={post.id}
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      <p className="text-lg font-semibold">{post.subject}</p>
-                      <p className="font-medium italic text-xl">{post.title}</p>
-                    </div>
-                  </PostCard>
-                </motion.div>
-              ))
-            ) : (
-              <motion.div
-                className=" text-2xl font-bold"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                No posts found
-              </motion.div>
-            )}
+                        <p className="text-lg font-semibold">{post.subject}</p>
+                        <p className="font-medium italic text-xl">
+                          {post.title}
+                        </p>
+                      </div>
+                    </PostCard>
+                  </motion.div>
+                ))
+              : null}
           </AnimatePresence>
         </div>
       </div>
