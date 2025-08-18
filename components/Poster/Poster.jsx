@@ -62,7 +62,7 @@ export default function Poster() {
             {posts.length > 0
               ? posts.map((post, index) => (
                   <motion.div
-                    className="flex-auto overflow-hidden "
+                    className="flex-auto max-w-full"
                     key={post.id}
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export default function Poster() {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   >
                     <PostCard>
-                      <div className="flex relative overflow-auto flex-col gap-y-3 bg-gradient-to-r  from-purple-300 to-purple-400 rounded-lg px-4 py-6 shadow-sm">
+                      <div className="flex relative flex-col gap-y-3 bg-gradient-to-r  from-purple-300 to-purple-400 rounded-lg px-4 py-6 shadow-sm">
                         <div className="absolute top-4 right-4">
                           <div className="flex gap-x-3 flex-row-reverse items-center">
                             <PostDeleteButton
@@ -84,8 +84,10 @@ export default function Poster() {
                           </div>
                         </div>
 
-                        <p className="text-lg font-semibold">{post.subject}</p>
-                        <p className="font-medium italic text-xl">
+                        <p className="text-lg font-semibold break-words">
+                          {post.subject}
+                        </p>
+                        <p className="font-medium italic text-xl break-words">
                           {post.title}
                         </p>
                       </div>
