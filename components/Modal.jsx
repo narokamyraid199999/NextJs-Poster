@@ -5,17 +5,17 @@ export default function Modal({ open, onClose, onSubmit, editPostData }) {
   if (!open && Object.keys(editPostData).length == 0) return null;
 
   const [title, setTitle] = useState(editPostData?.title || "");
-  const [subject, setSubject] = useState(editPostData?.subject || "");
+  const [body, setBody] = useState(editPostData?.body || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(Object.keys(editPostData).length == 0 ? "create" : "edit", {
       title,
-      subject,
+      body,
       id: editPostData?.id || null,
     });
     setTitle("");
-    setSubject("");
+    setBody("");
   };
 
   return (
@@ -44,16 +44,16 @@ export default function Modal({ open, onClose, onSubmit, editPostData }) {
                 rows={4}
                 placeholder="Your Text"
                 className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
                 required
               ></textarea>
               <input
                 type="text"
                 placeholder="Your Name"
                 className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 required
               />
               <div className="flex justify-end gap-2 mt-4">
