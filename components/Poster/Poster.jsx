@@ -7,7 +7,7 @@ import Modal from "@/components/Modal";
 import PostEditButton from "@/components/PostEditButton";
 import PostDeleteButton from "@/components/PostDeleteButton";
 import { AnimatePresence, motion } from "framer-motion";
-import { getPosts } from "@/lib/Posts";
+import { getPosts, createPost, updatePost, deletePost } from "@/lib/Posts";
 import Loader from "../Loader";
 
 export default function Poster() {
@@ -24,19 +24,33 @@ export default function Poster() {
     });
   }, []);
 
-  const handlePostData = (action, newPostData) => {
-    if (action === "create") {
-      setPosts((oldPosts) => [
-        { ...newPostData, id: posts.length + 1 },
-        ...oldPosts,
-      ]);
-    } else if (action === "edit") {
-      setPosts(
-        posts.map((post) => (post.id === newPostData.id ? newPostData : post))
-      );
-    }
+  const handlePostData = async (action, newPostData) => {
     setModalOpen(false);
     setEditPostData({});
+    if (action === "create") {
+      setLoading(true);
+      const postRes = await createPost(newPostData);
+      if (postRes.success) {
+        setPosts((oldPosts) => [
+          { ...newPostData, id: postRes.id },
+          ...oldPosts,
+        ]);
+      } else {
+        console.log("faild to create post");
+      }
+      setLoading(false);
+    } else if (action === "edit") {
+      setLoading(true);
+      const postRes = await updatePost(newPostData);
+      if (postRes.success) {
+        setPosts(
+          posts.map((post) => (post.id === newPostData.id ? newPostData : post))
+        );
+      } else {
+        console.log("faild to update post");
+      }
+      setLoading(false);
+    }
   };
 
   const openModal = () => setModalOpen(true);
@@ -45,9 +59,16 @@ export default function Poster() {
     setEditPostData({});
   };
 
-  const handleButtonAction = (action, postId) => {
+  const handleButtonAction = async (action, postId) => {
     if (action === "delete") {
-      setPosts(posts.filter((post) => post.id !== postId));
+      setLoading(true);
+      const postRes = await deletePost(postId);
+      if (postRes.success) {
+        setPosts(posts.filter((post) => post.id !== postId));
+      } else {
+        console.log("faild to delete post");
+      }
+      setLoading(false);
     } else if (action === "edit") {
       setEditPostData(posts.find((post) => post.id === postId));
     }
@@ -65,7 +86,11 @@ export default function Poster() {
         />
         {/* main */}
         <div className="mt-12 px-[10%] flex gap-x-4 gap-y-8 flex-wrap pb-12 ">
-          {loading && posts.length == 0 && <Loader></Loader>}
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center w-full h-full z-50 bg-white/80 backdrop-blur-sm">
+              <Loader></Loader>
+            </div>
+          )}
           {posts.length == 0 && !loading && (
             <div className="w-full flex flex-col items-center justify-center gap-y-4 text-white">
               <h2 className="text-2xl font-bold">There's no posts yet</h2>
@@ -77,7 +102,7 @@ export default function Poster() {
               posts.map((post, index) => (
                 <motion.div
                   className="flex-auto max-w-full"
-                  key={post.id}
+                  key={index}
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -40 }}
