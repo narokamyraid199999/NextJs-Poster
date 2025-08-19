@@ -27,8 +27,8 @@ export default function Poster() {
   const handlePostData = (action, newPostData) => {
     if (action === "create") {
       setPosts((oldPosts) => [
-        ...oldPosts,
         { ...newPostData, id: posts.length + 1 },
+        ...oldPosts,
       ]);
     } else if (action === "edit") {
       setPosts(
