@@ -1,11 +1,5 @@
-import Link from "next/link";
+import Home from "@/components/Home/Home";
 
-export default function Home() {
-  return (
-    <main>
-      <h1 className="text-white text-center text-3xl  ">
-        Time to get started!
-      </h1>
-    </main>
-  );
+export default function HomePage() {
+  return <Home />;
 }

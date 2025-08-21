@@ -1,5 +1,6 @@
 import Logo from "@/public/logo.png";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -25,9 +26,15 @@ export default function Header() {
         </svg>
       </div>
       <header>
-        <nav className="flex justify-between items-center text-white container mx-auto py-10">
+        <nav className="flex justify-between items-center text-white container mx-auto py-10 select-none">
           <div className="flex items-center gap-6">
-            <img src={Logo.src} alt="logo" width={110} height={110} />
+            <Image
+              src={Logo}
+              priority={true}
+              alt="logo"
+              width={110}
+              height={110}
+            />
             <p className="text-3xl font-bold uppercase">nextlevel food</p>
           </div>
           <div className="flex items-center gap-8">
