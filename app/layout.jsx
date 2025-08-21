@@ -1,19 +1,17 @@
 import "./globals.css";
-import NavBar from "@/components/NavBar/NavBar";
-import Footer from "@/components/Footer/Footer";
+import Header from "../components/header/page";
 
 export const metadata = {
-  title: "NextJS Course App",
-  description: "Your first NextJS app!",
+  title: "Foodie Meals",
+  description: "Discover delicious Meals and Recipes",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <NavBar />
+        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

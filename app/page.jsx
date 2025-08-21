@@ -1,5 +1,11 @@
-import Poster from "@/components/Poster/Poster";
+import Link from "next/link";
 
 export default function Home() {
-  return <Poster />;
+  return (
+    <main>
+      <h1 className="text-white text-center text-3xl  ">
+        Time to get started!
+      </h1>
+    </main>
+  );
 }
