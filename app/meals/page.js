@@ -8,6 +8,11 @@ import MealsSpinner from "@/components/meals-spinner";
 
 const MealsLoader = async () => {
   const meals = await getMeals();
+  await new Promise((resolve) =>
+    setTimeout(function () {
+      resolve();
+    }, 5000)
+  );
   return <MealsGrid meals={meals} />;
 };
 
