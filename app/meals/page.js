@@ -8,8 +8,11 @@ import MealsSpinner from "@/components/meals-spinner";
 
 const MealsLoader = async () => {
   const meals = await getMeals();
+
   await new Promise((resolve) =>
-    setTimeout(function () {
+    setTimeout(async function () {
+      const res = await fetch("https://dummyjson.com/posts");
+      const resJson = await res.json();
       resolve();
     }, 5000)
   );
