@@ -10,11 +10,9 @@ const MealsLoader = async () => {
   const meals = await getMeals();
 
   await new Promise((resolve) =>
-    setTimeout(async function () {
-      const res = await fetch("https://dummyjson.com/posts");
-      const resJson = await res.json();
+    setTimeout(function () {
       resolve();
-    }, 5000)
+    }, 1000)
   );
   return <MealsGrid meals={meals} />;
 };
