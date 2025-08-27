@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 export default async function MealDetailsPage({ params }) {
-  const { mealSlug } = await params;
+  const { mealSlug } = params;
 
   if (!mealSlug) {
     notFound();
