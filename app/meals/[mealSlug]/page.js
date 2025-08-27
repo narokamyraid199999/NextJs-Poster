@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import MealsDetailsSpinner from "@/components/meals-spinner";
 
 const MealsDetailsLoader = async ({ meal }) => {
-  await new Promise((resolve) => setTimeout(() => resolve(), 2000));
+  await new Promise((resolve) => setTimeout(() => resolve(), 500));
 
   return (
     <>
@@ -36,10 +36,6 @@ const MealsDetailsLoader = async ({ meal }) => {
 
 export default async function MealDetailsPage({ params }) {
   const { mealSlug } = await params;
-
-  if (!mealSlug) {
-    notFound();
-  }
 
   const meal = await getMeal(mealSlug);
 

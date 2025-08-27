@@ -12,7 +12,7 @@ const MealsLoader = async () => {
   await new Promise((resolve) =>
     setTimeout(function () {
       resolve();
-    }, 1000)
+    }, 500)
   );
   return <MealsGrid meals={meals} />;
 };
