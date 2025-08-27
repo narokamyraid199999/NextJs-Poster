@@ -2,21 +2,11 @@ import { getMeal } from "@/lib/meals";
 import classes from "./page.module.css";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { Suspense } from "react";
+import MealsDetailsSpinner from "@/components/meals-spinner";
 
-export default async function MealDetailsPage({ params }) {
-  const { mealSlug } = await params;
-
-  if (!mealSlug) {
-    notFound();
-  }
-
-  const meal = await getMeal(mealSlug);
-
-  if (!meal) {
-    notFound();
-  }
-
-  meal.instructions = meal.instructions?.replace(/\n/g, "<br />");
+const MealsDetailsLoader = async ({ meal }) => {
+  await new Promise((resolve) => setTimeout(() => resolve(), 2000));
 
   return (
     <>
@@ -40,6 +30,30 @@ export default async function MealDetailsPage({ params }) {
           }}
         ></p>
       </main>
+    </>
+  );
+};
+
+export default async function MealDetailsPage({ params }) {
+  const { mealSlug } = await params;
+
+  if (!mealSlug) {
+    notFound();
+  }
+
+  const meal = await getMeal(mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  meal.instructions = meal.instructions?.replace(/\n/g, "<br />");
+
+  return (
+    <>
+      <Suspense fallback={<MealsDetailsSpinner />}>
+        <MealsDetailsLoader meal={meal}></MealsDetailsLoader>
+      </Suspense>
     </>
   );
 }
