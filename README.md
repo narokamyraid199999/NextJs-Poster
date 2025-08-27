@@ -1,19 +1,23 @@
-# NextJs Posts App
+# NextLevel Food - Next.js Recipe App
 
-A simple post management application built with [Next.js](https://nextjs.org/). Users can create, edit, and delete their own posts in a clean, modern interface.
+A delicious recipe sharing application built with [Next.js](https://nextjs.org/). Food lovers can discover, share, and explore recipes from around the world in a beautiful, modern interface.
 
 ## Features
 
-- **Create Posts:** Add new posts with a title and subject.
-- **Edit Posts:** Update existing posts easily.
-- **Delete Posts:** Remove posts you no longer want.
-- **Responsive UI:** Modern design with Tailwind CSS, works on all devices.
+- **Discover Meals:** Browse a curated collection of delicious recipes
+- **Recipe Details:** View detailed recipe information including ingredients, instructions, and creator details
+- **Community:** Join a community of food enthusiasts and share your passion for cooking
+- **Share Recipes:** Contribute your favorite recipes to the community
+- **Responsive Design:** Modern UI that works perfectly on all devices
+- **Image Slideshow:** Beautiful food photography showcase on the homepage
 
 ## Tech Stack
 
 - [Next.js 15](https://nextjs.org/) (App Router)
 - [React 19](https://react.dev/)
 - [Tailwind CSS 4](https://tailwindcss.com/)
+- [SQLite](https://www.sqlite.org/) (better-sqlite3) for data storage
+- [Framer Motion](https://www.framer.com/motion/) for animations
 
 ## Getting Started
 
@@ -35,24 +39,48 @@ A simple post management application built with [Next.js](https://nextjs.org/). 
 
 3. **Open your browser:**
 
-   Visit [http://localhost:3000](http://localhost:3000) to use the app.
+   Visit [http://localhost:3000](http://localhost:3000) to explore delicious recipes.
 
 ## Usage
 
-- Click the **New Post** button to add a post.
-- Use the edit (✏️) and delete (❌) buttons on each post card to manage your posts.
-- All data is stored in memory (no backend/database), so posts will reset on page reload.
+- **Homepage:** View featured recipes in an image slideshow and learn about the platform
+- **Meals:** Browse all available recipes with beautiful imagery and descriptions
+- **Recipe Details:** Click on any meal to see full recipe instructions, ingredients, and creator information
+- **Community:** Join the food community and discover cooking events
+- **Share:** Contribute your own recipes to the community (feature coming soon)
 
 ## Project Structure
 
-- `app/` - Next.js app directory (pages, layout, profile)
-- `components/` - Reusable UI components (Modal, PostCard, PostHeader, etc.)
-- `public/` - Static assets
-- `app/globals.css` - Global styles (Tailwind CSS)
+- `app/` - Next.js app directory with pages and routing
+  - `meals/` - Recipe browsing and individual recipe pages
+  - `community/` - Community features and events
+  - `globals.css` - Global styles (Tailwind CSS)
+- `components/` - Reusable UI components
+  - `images/` - Image slideshow components
+  - `meals/` - Recipe-related components
+  - `main-header/` - Navigation and header components
+- `lib/` - Database utilities and data fetching
+- `assets/` - Food images and icons
+- `public/` - Static assets and food photography
+
+## Database
+
+The app uses SQLite with better-sqlite3 for storing recipe data, including:
+
+- Recipe titles and descriptions
+- Cooking instructions
+- Creator information
+- Recipe images and slugs
 
 ## Customization
 
-You can easily extend this project by adding authentication, connecting to a backend, or enhancing the post model.
+You can easily extend this project by:
+
+- Adding user authentication
+- Implementing recipe search and filtering
+- Adding recipe categories and tags
+- Enhancing the sharing functionality
+- Adding recipe ratings and reviews
 
 ## License
 
