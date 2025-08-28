@@ -1,5 +1,6 @@
 import classes from "./page.module.css";
 import ImagePicker from "@/components/meals/image-picker";
+import ShareMealButton from "@/components/meals/share-meal-button";
 import { handleForm } from "@/lib/action";
 
 export default function ShareMealPage() {
@@ -41,9 +42,17 @@ export default function ShareMealPage() {
             ></textarea>
           </p>
           <ImagePicker label="Your Image" name="image" />
-          <p className={classes.actions}>
-            <button type="submit">Share Meal</button>
-          </p>
+          <div className={classes.actions}>
+            <div className="flex justify-end">
+              <ShareMealButton></ShareMealButton>
+              {/* <button className="flex gap-x-4 items-center" type="submit">
+                <div>
+                  <span>Share Meal</span>
+                  <span className="w-8 h-8 border-b-2 border-t-2 rounded-full border-white animate-spin"></span>
+                </div>
+              </button> */}
+            </div>
+          </div>
         </form>
       </main>
     </>

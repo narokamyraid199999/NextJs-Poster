@@ -5,6 +5,7 @@ import MealsGrid from "@/components/meals/meals-grid";
 import { getMeals } from "@/lib/meals";
 import { Suspense } from "react";
 import MealsSpinner from "@/components/meals-spinner";
+import Image from "next/image";
 
 const MealsLoader = async () => {
   const meals = await getMeals();
