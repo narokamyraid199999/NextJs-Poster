@@ -5,6 +5,19 @@ import Image from "next/image";
 import { Suspense } from "react";
 import MealsDetailsSpinner from "@/components/meals-spinner";
 
+export const generateMetadata = async ({ params }) => {
+  const { mealSlug } = await params;
+
+  const meal = await getMeal(mealSlug);
+
+  if (!meal) notFound();
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+};
+
 const MealsDetailsLoader = async ({ meal }) => {
   await new Promise((resolve) => setTimeout(() => resolve(), 500));
 
